@@ -6,7 +6,7 @@ import Click from "./components/Click";
 import Accuracy from "./components/Accuracy";
 
 function App() {
-  const [delay, setDelay] = useState(1000);
+  const [delay, setDelay] = useState(localStorage.getItem("delay") || 1000);
   const [nextTime, setNextTime] = useState();
 
   return (

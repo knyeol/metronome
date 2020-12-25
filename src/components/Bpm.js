@@ -22,7 +22,10 @@ export default function Bpm({ delay, setDelay }) {
     }
   }
 
-  useEffect(() => setBpm(roundValue(totalMs / delay)), [delay]);
+  useEffect(() => {
+    setBpm(roundValue(totalMs / delay));
+    localStorage.setItem("delay", delay);
+  }, [delay]);
 
   return (
     <div>
