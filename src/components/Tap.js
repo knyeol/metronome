@@ -5,7 +5,7 @@ function Tap({ setDelay }) {
   const [timeArray, setTimeArray] = useState([]);
   const maxWait = 3000;
 
-  function onClick() {
+  function onMouseDown() {
     if (!tapTime) return setTapTime(Date.now());
 
     setTapTime(prevTime => {
@@ -27,7 +27,7 @@ function Tap({ setDelay }) {
 
   return (
     <div>
-      <button onClick={onClick}>Tap Tempo</button>
+      <button onMouseDown={onMouseDown}>Tap Tempo</button>
     </div>
   );
 }
