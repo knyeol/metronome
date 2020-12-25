@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Bpm from "./components/Bpm";
+import Tap from "./components/Tap";
+import Click from "./components/Click";
+import Accuracy from "./components/Accuracy";
 
 function App() {
+  const [delay, setDelay] = useState(1000);
+  const [nextTime, setNextTime] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h3>Metronome</h3>
+      <p>
+        Clapping to a metronome every day improves your timing,
+        <small>&nbsp;some say&#8230;</small>
+      </p>
+      <Bpm delay={delay} setDelay={setDelay} />
+      <Click delay={delay} nextTime={nextTime} setNextTime={setNextTime} />
+      <Tap setDelay={setDelay} />
+      <Accuracy delay={delay} nextTime={nextTime} />
     </div>
   );
 }
