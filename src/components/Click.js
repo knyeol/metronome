@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 export default function Click({ delay, nextTime, setNextTime }) {
+  const [isPlaying, setIsPlaying] = useState(false);
   const [clickTimeout, setClickTimeout] = useState();
   const [clickInterval, setClickInterval] = useState();
   const [volume, setVolume] = useState(100);
-  const [isPlaying, setIsPlaying] = useState(false);
   const click = new Audio(
     "https://firebasestorage.googleapis.com/v0/b/metronome-adc80.appspot.com/o/click.wav?alt=media&token=1675b659-a78e-43b4-bd7e-a12f5477903b"
   );
@@ -15,7 +15,7 @@ export default function Click({ delay, nextTime, setNextTime }) {
   }
 
   function playClick() {
-    setNextTime(Date.now() + delay);
+    setNextTime(+delay + Date.now());
     click.volume = volume / 100;
     click.load();
     click.play();

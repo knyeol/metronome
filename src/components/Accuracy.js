@@ -31,17 +31,19 @@ function Accuracy({ delay, nextTime }) {
     setDelayMsg("ms " + (isLate ? "late" : "early"));
   }
 
-  useEffect(() => {
+  function getScore() {
     if (!timeDifference) return;
     const delayRatio = timeDifference / maxDelay;
     const score = Math.round((1 - delayRatio) * 10);
     getEmoji(score < 0 ? 0 : score);
-  }, [timeDifference]);
+  }
+
+  useEffect(() => getScore(), [timeDifference]);
 
   return (
     <div>
       <div>
-        <button className="accuracy-button" onMouseDown={onMouseDown}>
+        <button className="accuracy-button" onMouseDown={() => onMouseDown()}>
           <h1>{emoji}</h1>
           <h4>
             {timeDifference

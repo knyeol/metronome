@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 export default function Bpm({ delay, setDelay }) {
   const totalMs = 60000;
   const [bpm, setBpm] = useState(totalMs / delay);
-  const bpmRef = useRef(false);
 
   function roundValue(x) {
     return Math.round(x * 100) / 100;
