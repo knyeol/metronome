@@ -9,7 +9,10 @@ export default function Bpm({ delay, setDelay }) {
   }
 
   function changedInput(e) {
-    const newValue = roundValue(+e.target.value);
+    let value = +e.target.value;
+    if (value < 1) value = 1;
+    else if (value > 60000) value = 60000;
+    const newValue = roundValue(value);
     const convertedValue = roundValue(totalMs / newValue);
     const targetClass = e.target.className;
 
